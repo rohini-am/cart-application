@@ -1,0 +1,25 @@
+
+
+<div class="flex-grid">
+    <div *ngFor="let product of shoppingList">
+        <div class="thumbnail">
+            <img src={{product.img_url}} class="fixwidth" alt="product image" />
+            <div class="caption clearfix">
+                <div class="product__name">{{product.name}}</div>
+                <div class="price_holder">
+                        <span class="product__price">Rs.{{product.price}}</span>
+                        <span class="product__discount">{{product.discount}}% off</span>
+                </div>
+                
+                <div class="product__button-wrap">
+                    <button  *ngIf="product.added"  (click)="RemoveProduct(product)" class="btn add-cart-btn">Remove
+                    </button>
+                    <button  *ngIf="! product.added"  (click)="AddProduct(product)" class="btn add-cart-btn">Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
