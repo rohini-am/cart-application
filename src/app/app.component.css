@@ -1,7 +1,23 @@
 .search{
-    width:95%;
+    width: 53%;
+    display: inline-block;
+    height: 45px;
+    opacity: .4;
+    margin: 4px;
+    padding: 0px;
+    background-color: #47479c;
 }
 
 .cart{
-    width:5%;
+    width: 5%;
+    /* display: inline-block; */
+    float: right;
+    margin-top: 12px;
 }
+
+.head-icon{
+    width:40%;
+    display:inline-block;
+    height: 35px;
+  }
+

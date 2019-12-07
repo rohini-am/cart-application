@@ -17,3 +17,21 @@
   .form-control::placeholder  {
     font-family: FontAwesome;
   }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .search-field{
+    display: inline-block;
+    width:95%;
+  }
+
+  .icon{
+    display: inline-block;
+    width:5%;
+  }
+
+  .mat-form-field-infix{
+    padding: 7px;
+  }

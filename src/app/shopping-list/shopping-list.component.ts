@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shopping-list',
@@ -8,7 +9,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class ShoppingListComponent implements OnInit {
   url:string;
-  shoppingList :any
+  shoppingList :any;
+  @Input() searchModel:any;
+  @Input() sortParams:any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -20,7 +23,13 @@ export class ShoppingListComponent implements OnInit {
     this.http.get<any[]>(this.url).subscribe(data => {
       this.shoppingList=data;
       console.log(this.shoppingList);
-    })
+      //this.sortList();
+    });
+    
+  }
+
+  sortList(){
+   // this.shoppingList = this.shoppingList.pipe(map(arr => arr.sort((a,b) => a.price < b.price)));
   }
 
 }
