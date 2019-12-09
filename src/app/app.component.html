@@ -17,13 +17,12 @@
 
 <!--Shopping List & Filter-->
 <div class="row" style="margin-top: 15px">
-  <div class="col-md-4" style="width:25%">
-
+  <div class="col-md-4" style="width:25%;display: inline-block;">
+      <app-filter></app-filter>
   </div>
   <div class="col-md-8" style="width:75%;float:right">
-      <app-sort style="height:100px"></app-sort>
-      {{sortParams}}
-      <app-shopping-list [searchModel]="searchModel" [sortParams]="sortParams"></app-shopping-list>
+      <app-sort style="height:100px" (sortParams)="fetchObj($event)"></app-sort>
+      <app-shopping-list [searchModel]="searchModel" [sortParams]="sortObj"></app-shopping-list>
   </div>
 </div>
 

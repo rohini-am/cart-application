@@ -1,0 +1,26 @@
+.slider-container{
+    width: 80%;
+    margin: auto;
+    padding-top: 35px;
+}
+
+.heading{
+    width:80%;
+    margin: auto;
+}
+
+.container{
+    padding-top: 45px;
+}
+
+.button-holder{
+    width: 27%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.button-holder button{
+    background-color: #1976d2;
+    border-radius: 10px;
+    width:80px;
+}

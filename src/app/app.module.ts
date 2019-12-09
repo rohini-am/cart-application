@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListFilterPipe } from './list-filter.pipe';
 import { FilterComponent } from './filter/filter.component';
 import { SortComponent } from './sort/sort.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SortComponent } from './sort/sort.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialsModule
+    MaterialsModule,
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

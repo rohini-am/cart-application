@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, Input,EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-sort',
@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 })
 export class SortComponent implements OnInit {
   tabVal: any;
+  @Input() sortObj;
   @Output() sortParams: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
@@ -14,26 +15,25 @@ export class SortComponent implements OnInit {
   }
 
   setTab(event){
-    let sortObj;
     this.tabVal = event.tab.textLabel;
     switch(this.tabVal){
-      case "Price Low-High": sortObj = {
+      case "Price Low-High": this.sortObj = {
                               key:'price',
                               sortDec : false
                             };
                             break;
-      case "Price High-Low": sortObj = {
+      case "Price High-Low": this.sortObj = {
                               key:'price',
                               sortDec : true
                             };
                             break;
-      case "Discount": sortObj = {
+      case "Discount": this.sortObj = {
                         key:'discount',
                         sortDec : false
                       };
                       break;
     }
     console.log(event.tab);
-    this.sortParams.emit(sortObj);
+    this.sortParams.emit(this.sortObj);
   }
 }
