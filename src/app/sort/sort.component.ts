@@ -19,17 +19,17 @@ export class SortComponent implements OnInit {
     switch(this.tabVal){
       case "Price Low-High": this.sortObj = {
                               key:'price',
-                              sortDec : false
+                              sortOrder : 'asc'
                             };
                             break;
       case "Price High-Low": this.sortObj = {
                               key:'price',
-                              sortDec : true
+                              sortOrder : 'desc'
                             };
                             break;
       case "Discount": this.sortObj = {
                         key:'discount',
-                        sortDec : false
+                        sortOrder : 'desc'
                       };
                       break;
     }

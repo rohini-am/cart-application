@@ -2,22 +2,10 @@
     <div class="heading">Filters</div>
     <div class="slider-container">
         <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+        <div class="slider-label">Price</div>
     </div> 
     <div class="button-holder">
-            <button mat-raised-button color="primary">Apply</button>
+            <button mat-raised-button color="primary" (click)="setRange()">Apply</button>
     </div>
 
 </div>
-
-<!-- <ng5-slider
-        [(value)]="element.from"
-        [(highValue)]="element.to"
-        [options]="{
-          floor: 0,
-          ceil: 100,
-          disabled: !element.active,
-          hideLimitLabels: true,
-          hidePointerLabels: true
-        }"
-        [manualRefresh]="slidersRefresh"
-      ></ng5-slider> -->

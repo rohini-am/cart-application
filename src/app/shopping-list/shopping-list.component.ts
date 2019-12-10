@@ -10,18 +10,21 @@ import { map } from 'rxjs/operators';
 export class ShoppingListComponent implements OnInit {
   url:string;
   shoppingList :any;
-  sortType:any
+  displayList: any;
+  sortType:any = {key:'price',sortOrder:'asc'}
   @Input() searchModel:any;
   @Input() sortParams:any;
+  @Input() priceRange:any;
   constructor(private http: HttpClient, private ref:ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.sortParams && changes.sortParams.currentValue){
       this.sortType = changes.sortParams.currentValue;     
-      this.sortList(this.sortType);
-    }
-    
-    
+      //this.sortList(this.sortType);
+      this.ref.detectChanges();
+    } else if(changes.priceRange && changes.priceRange.currentValue){
+      this.fetchObjRange(changes.priceRange.currentValue);
+    }  
   }
 
   ngOnInit() {
@@ -32,29 +35,20 @@ export class ShoppingListComponent implements OnInit {
     this.url="https://api.myjson.com/bins/qzuzi";
     this.http.get<any[]>(this.url).subscribe(data => {
       this.shoppingList=data;
-      console.log(this.shoppingList);
-      this.sortList({key:'price',sortDesc:false});
+      this.displayList=data;
+      //this.sortList({key:'price',sortDesc:false});
     });
     
   }
 
-  sortList(val){
-   // this.shoppingList = this.shoppingList.pipe(map(arr => arr.sort((a,b) => a.price < b.price)));
-   if(val.key == 'price' && val.sortDesc){
-    this.shoppingList = this.shoppingList.sort((a, b) => (a.price < b.price) ? 1 : -1);
+  fetchObjRange(rangeObj){
+    console.log('Range: '+rangeObj)
+    this.displayList = this.shoppingList
+    .filter(function(obj) {
+      return (obj.price <= rangeObj.highValue && obj.price >= rangeObj.value);
+    });
     this.ref.detectChanges();
-   } else if(val.key == 'price' && !val.sortDesc){
-    this.shoppingList = this.shoppingList.sort((a, b) => (a.price > b.price) ? 1 : -1);
-    this.ref.detectChanges();
-   }else if(val.key == 'discount'){
-    this.shoppingList = this.shoppingList.sort((a, b) => (a.discount < b.discount) ? 1 : -1);
-    this.ref.detectChanges();
-   }
-   
   }
 
-  sortListReverse(val){
-
-  }
 
 }

@@ -11,7 +11,9 @@ export class AppComponent {
   title = 'cart-application';
   searchModel: string;
   sortObj : any;
-  @Output() sortParams: EventEmitter<any> = new EventEmitter();
+  rangeObj:any;
+  @Output() sortParams: EventEmitter<any> = new EventEmitter(); 
+  @Output() priceRange: EventEmitter<any> = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes)
@@ -25,6 +27,11 @@ export class AppComponent {
     console.log(event);
     this.sortObj = event;
     this.sortParams.emit(this.sortObj)
+  }
+
+  getRange(event){
+    this.rangeObj = event;
+    this.priceRange.emit(this.rangeObj);
   }
   
 }

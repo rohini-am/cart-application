@@ -11,6 +11,8 @@
 
 .container{
     padding-top: 45px;
+    height: 100%;
+    border-right: 1px solid #cac3c3;
 }
 
 .button-holder{
@@ -23,4 +25,9 @@
     background-color: #1976d2;
     border-radius: 10px;
     width:80px;
+}
+
+.slider-label{
+    margin: auto;
+    width: 20%;
 }

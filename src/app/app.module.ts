@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { SearchComponent } from './search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListFilterPipe } from './list-filter.pipe';
+import { ListFilterPipe } from './pipes/list-filter/list-filter.pipe';
 import { FilterComponent } from './filter/filter.component';
 import { SortComponent } from './sort/sort.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { SortByPipe } from './pipes/sort/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     SearchComponent,
     ListFilterPipe,
     FilterComponent,
-    SortComponent
+    SortComponent,
+    SortByPipe
   ],
   imports: [
     BrowserModule,

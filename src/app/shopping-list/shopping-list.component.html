@@ -1,7 +1,7 @@
 
 {{sortObj}}
 <div class="flex-grid">
-    <div *ngFor="let product of shoppingList | listFilter : searchModel ">
+    <div *ngFor="let product of displayList | listFilter : searchModel | sortBy: sortType.sortOrder: sortType.key">
         <div class="thumbnail">
             <img src={{product.img_url}} class="fixwidth" alt="product image" />
             <div class="caption clearfix">
