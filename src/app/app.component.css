@@ -2,17 +2,20 @@
     width: 53%;
     display: inline-block;
     height: 45px;
-    opacity: .4;
-    margin: 4px;
+    /* opacity: .4; */
+    margin: 0px;
     padding: 0px;
-    background-color: #47479c;
+    /* background-color: #47479c; */
+    position: absolute;
+    top: 5px;
+    left: 35%;
 }
 
 .cart{
     width: 5%;
     /* display: inline-block; */
     float: right;
-    margin-top: 12px;
+    /* margin-top: 12px; */
 }
 
 .head-icon{
@@ -20,4 +23,34 @@
     display:inline-block;
     height: 35px;
   }
+
+  #svgelem{
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-40%);
+    -ms-transform: translateX(-40%);
+    transform: translateX(-40%);
+ }
+
+ /* .head-icon > span:hover:before {
+    content: "\2605";
+    position: absolute;
+ }*/
+
+ .head-icon{
+    width: 22%;
+    display: inline-block;
+    height: 35px;
+ } 
+
+ .cart-count{
+    position: relative;
+    left: 15px;
+    top: 5px;
+    background: red;
+    width: 13px;
+    font-size: 13px;
+    padding-left: 5px;
+    border-radius: 50%;
+ }
 

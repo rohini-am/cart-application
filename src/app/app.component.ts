@@ -1,4 +1,5 @@
 import { Component, Output ,EventEmitter, SimpleChanges} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,17 @@ export class AppComponent {
   searchModel: string;
   sortObj : any;
   rangeObj:any;
+  showCart:boolean = false;
+  checkoutItems:any=[];
   @Output() sortParams: EventEmitter<any> = new EventEmitter(); 
   @Output() priceRange: EventEmitter<any> = new EventEmitter();
+  @Output() checkoutCart: EventEmitter<any> = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes)
   }
+
+  constructor(private router:Router){}
 
   ngOninit(){
     console.log(this.sortObj);
@@ -32,6 +38,17 @@ export class AppComponent {
   getRange(event){
     this.rangeObj = event;
     this.priceRange.emit(this.rangeObj);
+  }
+
+  getCartItems(event){
+    this.checkoutItems = event;
+    console.log(this.checkoutItems)
+  }
+
+  cartItems(){
+    this.showCart = true;
+    this.checkoutCart.emit(this.checkoutItems);
+  //this.router.navigate(['/cart']);
   }
   
 }

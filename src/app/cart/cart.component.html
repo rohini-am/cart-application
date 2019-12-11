@@ -1,0 +1,67 @@
+<div class="cart-container">
+    <div class="cartItems col-md-8">
+            <div layout-gt-xs="row" *ngFor="let pdt of checkoutItems | listFilter : searchModel" style="margin: 10px;">
+                <mat-card>
+                    <mat-card-title-group>
+                        <img mat-card-md-image src={{pdt.img_url}}>
+                        <mat-card-title class="text-xxl">{{pdt.name}}</mat-card-title>
+                        <mat-card-subtitle>
+                            <div class="description-block">
+                                <span class="product__price">Rs.{{pdt.price}}</span>
+                                <span class="product__discount">{{pdt.discount}}% off</span>
+                            </div>
+                            <div class="counter-block">
+                                <mat-form-field>
+                                    <button 
+                                      mat-button 
+                                      mat-icon-button 
+                                      matPrefix 
+                                      aria-label="Remove" 
+                                      [color]="getColor()" 
+                                      (click)="incrementValue(-_step)" 
+                                      [disabled]="shouldDisableDecrement(_value)">
+                                      <mat-icon>remove</mat-icon>
+                                    </button>
+                                    <input matInput type="number" [(ngModel)]="_value" (focus)="setColor('primary')" (blur)="setColor('default')" />
+                                    <button 
+                                      mat-button 
+                                      mat-icon-button 
+                                      matSuffix
+                                      aria-label="Add" 
+                                      [color]="getColor()" 
+                                      (click)="incrementValue(_step)" 
+                                      [disabled]="shouldDisableIncrement(_value)">
+                                      <mat-icon>add</mat-icon>
+                                    </button>
+                                  </mat-form-field>
+                            </div>
+                        </mat-card-subtitle>
+                        
+                    </mat-card-title-group>
+                </mat-card>
+            </div>
+    </div>
+    <div class="subTotal col-md-4">
+            <mat-card flex-gt-sm>
+                    <mat-card-title>Price Details</mat-card-title>
+                    <!-- <mat-card-subtitle>Info About This Item</mat-card-subtitle> -->
+                    <mat-divider></mat-divider>
+                    <mat-list>
+                        <mat-list-item>
+                            <h4 matLine>Item Total : 850</h4>
+                        </mat-list-item>
+                        <mat-divider matInset></mat-divider>
+                         <mat-list-item>
+                            <h4 matLine>Discount : 40</h4>
+                        </mat-list-item>
+                        <mat-divider matInset></mat-divider>
+                    </mat-list>
+                    <mat-divider></mat-divider>
+                    <mat-card-actions>
+                        <!-- <button mat-button color="accent" class="text-upper">Edit</button> -->
+                        <h3>Total Payable : 810</h3>
+                    </mat-card-actions>
+                </mat-card>
+    </div>
+</div>
+

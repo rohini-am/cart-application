@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges,ChangeDetectorRef ,Output,EventEmitter} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -11,10 +11,12 @@ export class ShoppingListComponent implements OnInit {
   url:string;
   shoppingList :any;
   displayList: any;
+  cartProducts:any=[];
   sortType:any = {key:'price',sortOrder:'asc'}
   @Input() searchModel:any;
   @Input() sortParams:any;
   @Input() priceRange:any;
+  @Output() checkoutCart: EventEmitter<any> = new EventEmitter();
   constructor(private http: HttpClient, private ref:ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -50,5 +52,24 @@ export class ShoppingListComponent implements OnInit {
     this.ref.detectChanges();
   }
 
+  addProduct(product){
+    this.cartProducts.push(product);
+    //product.count = product.count+1;
+    product.added = true;
+    this.checkoutCart.emit(this.cartProducts);
+    console.log(this.cartProducts)
+  }
+
+  removeProduct(product){
+    //product.count = 0;
+    product.added = false;
+      this.cartProducts.filter((pdt,i)=>{
+        if(pdt.id == product.id){
+          this.cartProducts.splice(i,1);
+        }
+      })
+      this.checkoutCart.emit(this.cartProducts);
+      console.log(this.cartProducts)
+  }
 
 }

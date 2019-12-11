@@ -1,15 +1,21 @@
 <!-- Toolbar -->
 <div class="toolbar row" role="banner">
-  <div class="head-icon"></div>
+  <div class="head-icon" (click)="showCart = false;">
+      <!-- <span>☆</span> -->
+    <svg id="svgelem" height="50" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="25,2.5 10,49.5 48.5,19.5 2.5,19.5 40,49.5" fill="yellow"/>
+   </svg>
+  </div>
   <div class="search">
     <app-search [(searchModel)]="searchModel"></app-search>
   </div>
   <div class="cart">
       <!-- <i class="fas fa-shopping-cart"></i> -->
+      <div class="cart-count">{{checkoutItems.length}}</div>
       <div style="margin-left:1%; cursor:pointer" (click)="cartItems()" >	
          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30"  viewBox="0 0 24 24">
           <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-        </svg> {{totalvalue}}		
+        </svg>		
       </div>	
   </div>
     
@@ -17,13 +23,21 @@
 
 <!--Shopping List & Filter-->
 <div class="row" style="margin-top: 15px;height:100%">
-  <div class="col-md-4" style="width:22%;display: inline-block;height:100%">
+  <div *ngIf="!showCart" style="height: 100%;">
+    <div class="col-md-4" style="width:22%;display: inline-block;height:100%">
       <app-filter (priceRange)="getRange($event)"></app-filter>
-  </div>
-  <div class="col-md-8" style="width:75%;float:right">
+    </div>
+    <div class="col-md-8" style="width:75%;float:right">
       <app-sort style="height:100px" (sortParams)="fetchObj($event)"></app-sort>
-      <app-shopping-list [searchModel]="searchModel" [sortParams]="sortObj" [priceRange]="rangeObj"></app-shopping-list>
+      <app-shopping-list [searchModel]="searchModel" [sortParams]="sortObj" [priceRange]="rangeObj" (checkoutCart)="getCartItems($event)"></app-shopping-list>
+    </div>
   </div>
+  <div *ngIf="showCart" style="height:auto">
+    <app-cart [checkoutCart]="checkoutItems" [searchModel]="searchModel"></app-cart>
+  </div>
+  
 </div>
+
+
 
 <router-outlet></router-outlet>

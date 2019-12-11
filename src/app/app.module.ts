@@ -13,6 +13,7 @@ import { FilterComponent } from './filter/filter.component';
 import { SortComponent } from './sort/sort.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SortByPipe } from './pipes/sort/sort-by.pipe';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SortByPipe } from './pipes/sort/sort-by.pipe';
     ListFilterPipe,
     FilterComponent,
     SortComponent,
-    SortByPipe
+    SortByPipe,
+    CartComponent
   ],
   imports: [
     BrowserModule,
