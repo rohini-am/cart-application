@@ -54,14 +54,15 @@ export class ShoppingListComponent implements OnInit {
 
   addProduct(product){
     this.cartProducts.push(product);
-    //product.count = product.count+1;
+    product.count = 1;
+    product.discountAmount = product.price * (product.discount/100);
     product.added = true;
     this.checkoutCart.emit(this.cartProducts);
     console.log(this.cartProducts)
   }
 
   removeProduct(product){
-    //product.count = 0;
+    product.count = 0; 
     product.added = false;
       this.cartProducts.filter((pdt,i)=>{
         if(pdt.id == product.id){

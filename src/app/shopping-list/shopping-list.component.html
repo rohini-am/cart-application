@@ -1,5 +1,4 @@
 
-{{sortObj}}
 <div class="flex-grid">
     <div *ngFor="let product of displayList | listFilter : searchModel | sortBy: sortType.sortOrder: sortType.key">
         <div class="thumbnail">
@@ -12,7 +11,7 @@
                 </div>
                 
                 <div class="product__button-wrap">
-                    <button  *ngIf="product.added"  (click)="removeProduct(product)" class="btn add-cart-btn">Remove
+                    <button  *ngIf="product.added"  (click)="removeProduct(product)" class="btn remove-cart-btn">Remove
                     </button>
                     <button  *ngIf="! product.added"  (click)="addProduct(product)" class="btn add-cart-btn">Add to cart
                     </button>

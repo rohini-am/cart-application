@@ -1,6 +1,6 @@
 <!-- Toolbar -->
 <div class="toolbar row" role="banner">
-  <div class="head-icon" (click)="showCart = false;">
+  <div class="head-icon" (click)="showCart = false;" data-toggle="tooltip" title="Home - Shopping List">
       <!-- <span>☆</span> -->
     <svg id="svgelem" height="50" xmlns="http://www.w3.org/2000/svg">
       <polygon points="25,2.5 10,49.5 48.5,19.5 2.5,19.5 40,49.5" fill="yellow"/>
@@ -33,7 +33,7 @@
     </div>
   </div>
   <div *ngIf="showCart" style="height:auto">
-    <app-cart [checkoutCart]="checkoutItems" [searchModel]="searchModel"></app-cart>
+    <app-cart [checkoutCart]="checkoutItems" (cartItems)="getCartItems($event)" [searchModel]="searchModel"></app-cart>
   </div>
   
 </div>

@@ -42,6 +42,10 @@ export class AppComponent {
 
   getCartItems(event){
     this.checkoutItems = event;
+    if(this.checkoutItems.length<1){
+      this.showCart = false;
+    }
+    //this.ref.detectChanges();
     console.log(this.checkoutItems)
   }
 

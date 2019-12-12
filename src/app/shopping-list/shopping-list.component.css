@@ -75,4 +75,16 @@ img {
     border-radius: 15px;
     box-shadow: none;
     border-style: solid;
+    cursor: pointer;
+}
+
+.remove-cart-btn{
+    background:red;
+    height: 35px;
+    width: 100px;
+    font-weight: bold;
+    border-radius: 15px;
+    box-shadow: none;
+    border-style: solid;
+    cursor: pointer;
 }

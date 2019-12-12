@@ -1,6 +1,6 @@
 <div class="cart-container">
     <div class="cartItems col-md-8">
-            <div layout-gt-xs="row" *ngFor="let pdt of checkoutItems | listFilter : searchModel" style="margin: 10px;">
+            <div layout-gt-xs="row" *ngFor="let pdt of checkoutItems| listFilter : searchModel; let i= index ; trackBy: trackById; " style="margin: 10px;">
                 <mat-card>
                     <mat-card-title-group>
                         <img mat-card-md-image src={{pdt.img_url}}>
@@ -18,23 +18,24 @@
                                       matPrefix 
                                       aria-label="Remove" 
                                       [color]="getColor()" 
-                                      (click)="incrementValue(-_step)" 
-                                      [disabled]="shouldDisableDecrement(_value)">
+                                      (click)="incrementValue(-_step,pdt)" 
+                                      [disabled]="shouldDisableDecrement(pdt.count)">
                                       <mat-icon>remove</mat-icon>
                                     </button>
-                                    <input matInput type="number" [(ngModel)]="_value" (focus)="setColor('primary')" (blur)="setColor('default')" />
+                                    <input matInput type="number" [(ngModel)]="pdt.count" (focus)="setColor('primary')" (blur)="setColor('default')" (change)="calcPriceDetails()"/>
                                     <button 
                                       mat-button 
                                       mat-icon-button 
                                       matSuffix
                                       aria-label="Add" 
                                       [color]="getColor()" 
-                                      (click)="incrementValue(_step)" 
-                                      [disabled]="shouldDisableIncrement(_value)">
+                                      (click)="incrementValue(_step,pdt)" 
+                                      [disabled]="shouldDisableIncrement(pdt.count)">
                                       <mat-icon>add</mat-icon>
                                     </button>
                                   </mat-form-field>
                             </div>
+                            <div class="removeButton" (click)="onRemovePdt(pdt,i)"> REMOVE </div>
                         </mat-card-subtitle>
                         
                     </mat-card-title-group>
@@ -48,18 +49,18 @@
                     <mat-divider></mat-divider>
                     <mat-list>
                         <mat-list-item>
-                            <h4 matLine>Item Total : 850</h4>
+                            <h4 matLine>Item Total : {{itemTotal}}</h4>
                         </mat-list-item>
                         <mat-divider matInset></mat-divider>
                          <mat-list-item>
-                            <h4 matLine>Discount : 40</h4>
+                            <h4 matLine>Discount : {{totalDiscount}}</h4>
                         </mat-list-item>
                         <mat-divider matInset></mat-divider>
                     </mat-list>
                     <mat-divider></mat-divider>
                     <mat-card-actions>
                         <!-- <button mat-button color="accent" class="text-upper">Edit</button> -->
-                        <h3>Total Payable : 810</h3>
+                        <h3>Total Payable : {{totalPayable}}</h3>
                     </mat-card-actions>
                 </mat-card>
     </div>
