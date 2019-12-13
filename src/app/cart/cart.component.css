@@ -49,12 +49,13 @@
     height: 30px;
     width: 30px;
     padding: 5px;
+    font-size: 16px !important;
   }
   
   .cart-container mat-form-field-infix{
     border: 1px solid grey;
     width: 17px;
-    font-size: 15px;
+    font-size: 16px !important;
     height: 25px;
     margin: 5px;
   }
@@ -73,5 +74,17 @@
     display: inline-block;
     margin: 20px;
     font-weight: bold;
+  }
+
+  .image-holder{
+    display: inline-block;
+    width: 25%
+  }
+
+  .pdt-details{
+    display: inline-block;
+    width: 75%;
+    vertical-align: top;
+    padding-top: 15px;
   }
 

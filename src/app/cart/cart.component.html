@@ -2,8 +2,11 @@
     <div class="cartItems col-md-8">
             <div layout-gt-xs="row" *ngFor="let pdt of checkoutItems| listFilter : searchModel; let i= index ; trackBy: trackById; " style="margin: 10px;">
                 <mat-card>
-                    <mat-card-title-group>
-                        <img mat-card-md-image src={{pdt.img_url}}>
+                    <div class="image-holder">
+                            <img mat-card-md-image src={{pdt.img_url}}>
+                    </div>
+                    
+                    <mat-card-title-group class="pdt-details">
                         <mat-card-title class="text-xxl">{{pdt.name}}</mat-card-title>
                         <mat-card-subtitle>
                             <div class="description-block">
