@@ -1,5 +1,6 @@
 import { Component, OnInit, SimpleChanges, Input, ChangeDetectorRef,Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ServiceService } from '../service.service'
 
 @Component({
   selector: 'app-cart',
@@ -25,15 +26,14 @@ export class CartComponent implements OnInit {
   _max: number = Infinity;
   _wrap: boolean = false;
   color: string = 'default';
-  constructor( private ref:ChangeDetectorRef) { }
+  constructor( private ref:ChangeDetectorRef, private sharedService:ServiceService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.checkoutCart && changes.checkoutCart.currentValue){
       console.log(changes.checkoutCart)
       this.checkoutItems = changes.checkoutCart.currentValue;
+      this.sharedService.set(this.checkoutItems);
       this.copyList = this.checkoutItems
-      //this.sortType = changes.sortParams.currentValue;     
-      //this.sortList(this.sortType);
       this.ref.detectChanges();
     } 
   }
@@ -96,7 +96,8 @@ export class CartComponent implements OnInit {
       this.onRemovePdt(pdt);
     }
     pdt.discountAmount = (pdt.count * pdt.price) * (pdt.discount/100);
-    this.calcPriceDetails()
+    this.calcPriceDetails();
+    this.sharedService.set(this.checkoutItems);
     this.cartItems.emit(this.checkoutItems);
   }
 
@@ -121,10 +122,6 @@ export class CartComponent implements OnInit {
     return !this._wrap && inputValue >= this._max;
   }
 
-  // onIncrementPdt(pdt){
-  //   this.checkoutItems.push(pdt);
-  // }
-
   onRemovePdt(product){
     //this.checkoutItems.splice(i,1);
     this.checkoutItems = this.checkoutItems.filter((pdt,i)=>{   
@@ -134,6 +131,7 @@ export class CartComponent implements OnInit {
     }); 
     this.calcPriceDetails();
     this.cartItems.emit(this.checkoutItems);
+    this.sharedService.set(this.checkoutItems);
     this.ref.detectChanges();
   }
 

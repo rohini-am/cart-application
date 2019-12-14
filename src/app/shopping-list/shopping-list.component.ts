@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges,ChangeDetectorRef ,Output,EventEmitter} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,25 +13,27 @@ export class ShoppingListComponent implements OnInit {
   shoppingList :any;
   displayList: any;
   cartProducts:any=[];
+  exixtingCart:any = [];
   sortType:any = {key:'price',sortOrder:'asc'}
   @Input() searchModel:any;
   @Input() sortParams:any;
   @Input() priceRange:any;
   @Output() checkoutCart: EventEmitter<any> = new EventEmitter();
-  constructor(private http: HttpClient, private ref:ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private ref:ChangeDetectorRef, private sharedService:ServiceService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.sortParams && changes.sortParams.currentValue){
       this.sortType = changes.sortParams.currentValue;     
-      //this.sortList(this.sortType);
       this.ref.detectChanges();
     } else if(changes.priceRange && changes.priceRange.currentValue){
       this.fetchObjRange(changes.priceRange.currentValue);
-    }  
+    } 
   }
 
   ngOnInit() {
-    this.getShoppingList();
+     this.exixtingCart = this.sharedService.get();
+     this.getShoppingList();
+   
   }
 
   getShoppingList(){
@@ -38,7 +41,16 @@ export class ShoppingListComponent implements OnInit {
     this.http.get<any[]>(this.url).subscribe(data => {
       this.shoppingList=data;
       this.displayList=data;
-      //this.sortList({key:'price',sortDesc:false});
+      if(this.exixtingCart && this.exixtingCart.length > 0){
+        this.displayList.filter(pdt =>{
+          this.exixtingCart.filter(cartItem =>{
+            if(pdt.id === cartItem.id){
+              pdt.added = true;
+            }
+          });
+        });
+        this.cartProducts = this.exixtingCart;
+      }
     });
     
   }
@@ -58,6 +70,7 @@ export class ShoppingListComponent implements OnInit {
     product.discountAmount = product.price * (product.discount/100);
     product.added = true;
     this.checkoutCart.emit(this.cartProducts);
+    this.sharedService.set(this.cartProducts);
     console.log(this.cartProducts)
   }
 
@@ -72,5 +85,4 @@ export class ShoppingListComponent implements OnInit {
       this.checkoutCart.emit(this.cartProducts);
       console.log(this.cartProducts)
   }
-
 }

@@ -76,6 +76,8 @@ img {
     box-shadow: none;
     border-style: solid;
     cursor: pointer;
+    font-family: Verdana;
+    font-size:11px;
 }
 
 .remove-cart-btn{

@@ -1,4 +1,4 @@
-<div class="cart-container">
+<div class="cart-container" *ngIf="checkoutItems.length > 0">
     <div class="cartItems col-md-8">
             <div layout-gt-xs="row" *ngFor="let pdt of checkoutItems| listFilter : searchModel; let i= index ; trackBy: trackById; " style="margin: 10px;">
                 <mat-card>
@@ -67,5 +67,8 @@
                     </mat-card-actions>
                 </mat-card>
     </div>
+</div>
+<div *ngIf="checkoutItems.length < 1" class="no-items">
+  No Items in Cart!
 </div>
 

@@ -3,6 +3,10 @@
     display: inline-block;
 }
 
+.sort-title{
+  font-weight:bold;
+}
+
 .basic-container {
     padding: 30px;
   }

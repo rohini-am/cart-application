@@ -88,3 +88,10 @@
     padding-top: 15px;
   }
 
+.no-items{
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  font-size: 18px;
+  font-weight: bold;
+}
