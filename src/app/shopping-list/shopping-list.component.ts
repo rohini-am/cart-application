@@ -57,6 +57,9 @@ export class ShoppingListComponent implements OnInit {
 
   fetchObjRange(rangeObj){
     console.log('Range: '+rangeObj)
+    if(!this.shoppingList){
+      this.getShoppingList();
+    }
     this.displayList = this.shoppingList
     .filter(function(obj) {
       return (obj.price <= rangeObj.highValue && obj.price >= rangeObj.value);
