@@ -7,6 +7,7 @@ import { Component, OnInit, Output, Input,EventEmitter} from '@angular/core';
 })
 export class SortComponent implements OnInit {
   tabVal: any;
+  tabSelection: any;
   @Input() sortObj;
   @Output() sortParams: EventEmitter<any> = new EventEmitter();
   constructor() { }
