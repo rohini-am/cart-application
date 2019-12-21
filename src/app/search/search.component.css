@@ -1,37 +1,54 @@
-
-.container {
-    padding-top: 50px;
-    padding-bottom: 10px;
-    color: #405065;
+ /*Desktop Styles*/
+  @media only screen and (min-width: 961px) {
+    .container {
+      padding-top: 50px;
+      padding-bottom: 10px;
+      color: #405065;
+    }
+    
+    .search-hero {
+      max-width: 500px;
+      padding-bottom: 50px;
+      margin:auto;
+    }
+    .form-control {
+      box-shadow: 0 10px 40px 0 #B0C1D9;
+    }
+    .form-control::placeholder  {
+      font-family: FontAwesome;
+    }
+  
+    mat-form-field {
+      width: 100%;
+    }
+  
+    .search-field{
+      display: inline-block;
+      width:95%;
+    }
+  
+    .icon{
+      display: inline-block;
+      width:5%;
+    }
+  
+    .mat-form-field-infix{
+      padding: 7px;
+    }
   }
   
-  .search-hero {
-    max-width: 500px;
-    padding-bottom: 50px;
-    margin:auto;
-  }
+  @media only screen and (max-width: 400px) {
+    mat-form-field {
+      width: 100%;
+    }
   
-  .form-control {
-    box-shadow: 0 10px 40px 0 #B0C1D9;
-  }
-  .form-control::placeholder  {
-    font-family: FontAwesome;
-  }
-
-  mat-form-field {
-    width: 100%;
-  }
-
-  .search-field{
-    display: inline-block;
-    width:95%;
-  }
-
-  .icon{
-    display: inline-block;
-    width:5%;
-  }
-
-  .mat-form-field-infix{
-    padding: 7px;
+    .search-field{
+      display: inline-block;
+      width:90%;
+    }
+  
+    .icon{
+      display: inline-block;
+      vertical-align: middle;
+    }
   }

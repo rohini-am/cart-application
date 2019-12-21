@@ -22,25 +22,44 @@
 </div>
 
 <!--Shopping List & Filter-->
-<div class="row" style="margin-top: 15px;height:100%">
+<div class="row web-content" style="margin-top: 15px;">
   <div *ngIf="!showCart" style="height: 100%;">
-    <div class="col-md-4" style="width:22%;display: inline-block;height:100%">
-      <app-filter (priceRange)="getRange($event)"></app-filter>
+    <div class="web-view">
+      <div class="col-md-4" class="filter-container">
+        <app-filter (priceRange)="getRange($event)"></app-filter>
+      </div>
+      <div class="col-md-8" class="listing-container">
+        <app-sort class="sort-template" style="height:100px" (sortParams)="fetchObj($event)"></app-sort>
+        <app-shopping-list [searchModel]="searchModel" [sortParams]="sortObj" [priceRange]="rangeObj" (checkoutCart)="getCartItems($event)"></app-shopping-list>
+      </div>
     </div>
-    <div class="col-md-8" style="width:75%;float:right">
-      <app-sort style="height:100px" (sortParams)="fetchObj($event)"></app-sort>
-      <app-shopping-list [searchModel]="searchModel" [sortParams]="sortObj" [priceRange]="rangeObj" (checkoutCart)="getCartItems($event)"></app-shopping-list>
+    <div class="mobile-view">
+      <div class="manipulation-container">
+          <div class="manipulation-cell" data-toggle="modal" data-target="#viewModal" (click)="openForm();sortList=true;">Sort</div>
+          <div class="manipulation-cell" data-toggle="modal" data-target="#viewModal" (click)="openForm();filterList=true;">Filter</div>
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+              <app-sort class="sort-template" style="height:100px" (sortParams)="fetchObj($event)" *ngIf="sortList"></app-sort>
+              <app-filter (priceRange)="getRange($event)" *ngIf="filterList"></app-filter>
+            </form>
+          </div>
+        </div> 
+        <div class="listing-container">
+          <app-shopping-list [searchModel]="searchModel" [sortParams]="sortObj" [priceRange]="rangeObj" (checkoutCart)="getCartItems($event)"></app-shopping-list>
+        </div>    
+      </div>
+     
     </div>
-  </div>
+   
+</div>
   <div *ngIf="showCart" style="height:auto">
     <app-cart [checkoutCart]="checkoutItems" (cartItems)="getCartItems($event)" [searchModel]="searchModel"></app-cart>
   </div>
   
-</div>
 
-<div class="toolbar row footer" role="banner">
+<!-- <div class="toolbar row footer" role="banner">
    <div>copyright@2019</div>
-</div>
+</div> -->
 
 
 

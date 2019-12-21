@@ -36,4 +36,13 @@ export class SortComponent implements OnInit {
     console.log(event.tab);
     this.sortParams.emit(this.sortObj);
   }
+
+  radioChange(event){
+    let val ={
+      tab : {
+        textLabel : event.value
+      }
+    }
+    this.setTab(val);
+  }
 }

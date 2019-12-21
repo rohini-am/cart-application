@@ -1,4 +1,6 @@
-.cartItems{
+/*Desktop Styles*/
+@media only screen and (min-width: 961px) {
+  .cartItems{
     width:60%;
     display: inline-block;
 }
@@ -94,4 +96,59 @@
   left: 45%;
   font-size: 18px;
   font-weight: bold;
+}
+}
+
+@media only screen and (max-width: 400px) {
+  .image-holder{
+    display: inline-block;
+    width: 25%
+  }
+
+  .pdt-details{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    position: absolute;
+    left: 42%;
+  }
+
+  .counter-block{
+    width: 100%;
+  }
+
+  .counter-block mat-form-field{
+    width:35%;
+  }
+
+  .counter-block mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix{
+    left:25%;
+  }
+
+  .removeButton{
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+    bottom: 5px;
+  }
+
+  .product__price {
+    display: inline-block;
+    font-weight: bold;
+    width: 50%;
+}
+
+.product__discount {
+    color :green;
+    width:50%;
+    font-weight: bold;
+}
+
+.no-items{
+  position: absolute;
+    top: 50%;
+    left: 25%;
+    font-size: 18px;
+    font-weight: bold;
+}
 }

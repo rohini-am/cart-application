@@ -1,5 +1,6 @@
 import { Component, Output ,EventEmitter, SimpleChanges} from '@angular/core';
 import {Router} from '@angular/router';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent {
   sortObj : any;
   rangeObj:any;
   showCart:boolean = false;
+  sortList:boolean = false;
+  filterList:boolean = false;
   checkoutItems:any=[];
   @Output() sortParams: EventEmitter<any> = new EventEmitter(); 
   @Output() priceRange: EventEmitter<any> = new EventEmitter();
@@ -23,7 +26,7 @@ export class AppComponent {
     console.log(changes)
   }
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private matDialog: MatDialog){}
 
   ngOninit(){
     console.log(this.sortObj);
@@ -33,11 +36,13 @@ export class AppComponent {
     console.log(event);
     this.sortObj = event;
     this.sortParams.emit(this.sortObj)
+    this.closeForm();
   }
 
   getRange(event){
     this.rangeObj = event;
     this.priceRange.emit(this.rangeObj);
+    this.closeForm();
   }
 
   getCartItems(event){
@@ -51,6 +56,21 @@ export class AppComponent {
     this.showCart = true;
     this.checkoutCart.emit(this.checkoutItems);
   //this.router.navigate(['/cart']);
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    //this.matDialog.open(dialogConfig);
+  }
+
+  openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    this.sortList = false;
+    this.filterList = false;
   }
   
 }

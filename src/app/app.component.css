@@ -1,57 +1,223 @@
-.search{
-    width: 53%;
-    display: inline-block;
-    height: 45px;
-    /* opacity: .4; */
-    margin: 0px;
-    padding: 0px;
-    /* background-color: #47479c; */
-    position: absolute;
-    top: 5px;
-    left: 35%;
-}
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+   .web-content, .web-view{
+      /* height:100%; */
+   }
 
-.cart{
-    width: 5%;
-    /* display: inline-block; */
-    float: right;
-    /* margin-top: 12px; */
-}
-
-.head-icon{
-    width:40%;
-    display:inline-block;
-    height: 35px;
-    cursor: pointer;
+   .search{
+      width: 53%;
+      display: inline-block;
+      height: 45px;
+      /* opacity: .4; */
+      margin: 0px;
+      padding: 0px;
+      /* background-color: #47479c; */
+      position: absolute;
+      top: 5px;
+      left: 35%;
   }
+  
+  .cart{
+      width: 5%;
+      /* display: inline-block; */
+      float: right;
+      /* margin-top: 12px; */
+  }
+  
+  .head-icon{
+      width:40%;
+      display:inline-block;
+      height: 35px;
+      cursor: pointer;
+    }
+  
+    #svgelem{
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-40%);
+      -ms-transform: translateX(-40%);
+      transform: translateX(-40%);
+   }
+  
+   /* .head-icon > span:hover:before {
+      content: "\2605";
+      position: absolute;
+   }*/
+  
+   .head-icon{
+      width: 22%;
+      display: inline-block;
+      height: 35px;
+   }
+   
+   .filter-container{
+      width:22%;
+      display: inline-block;
+      height:100%;
+   }
 
-  #svgelem{
-    position: relative;
-    left: 50%;
-    -webkit-transform: translateX(-40%);
-    -ms-transform: translateX(-40%);
-    transform: translateX(-40%);
+   .listing-container{
+      width:75%;
+      float:right
+   }
+   .mobile-view{
+      display: none;
+   }
+  
  }
 
- /* .head-icon > span:hover:before {
-    content: "\2605";
-    position: absolute;
- }*/
+ /* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  .head-icon{
+     width:20%;
+     display: inline-block;
+     vertical-align: top;
+  }
+  .search{
+     width:70%;
+     display: inline-block;
+  }
+  .cart{
+   width:10%;
+   display: inline-block;
+   vertical-align: top;
+   }
+   .toolbar.footer{
+      display: none;
+   }
+   .web-view{
+      display: none;
+   }
 
- .head-icon{
-    width: 22%;
-    display: inline-block;
-    height: 35px;
- } 
+   .manipulation-cell{
+      display: inline-block;
+    width: 50%;
+    font-weight: bold;
+    position: relative;
+    left: 20%;
+    cursor: pointer;
+   }
+
+   .manipulation-container{
+   border-bottom: 1px solid #cac3c3;
+    /* margin-bottom: 5px; */
+    padding-bottom: 10px;
+   }
+   /* .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 70%;
+      position: relative;
+      transition: all 5s ease-in-out;
+    }
+    
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06D85F;
+    }
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+    } */
+
+    /* The popup form - hidden by default */
+.form-popup {
+   display: none;
+   position: absolute;
+   /* bottom: 0; */
+   left:15%;
+   border: 3px solid #f1f1f1;
+   z-index: 9;
+   width:70%;
+ }
+ 
+ /* Add styles to the form container */
+ .form-container {
+   max-width: 300px;
+   padding: 10px;
+   background-color: white;
+ }
+ 
+ /* Full-width input fields */
+ .form-container input[type=text], .form-container input[type=password] {
+   width: 100%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   border: none;
+   background: #f1f1f1;
+ }
+ 
+ /* When the inputs get focus, do something */
+ .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+   background-color: #ddd;
+   outline: none;
+ }
+ 
+ /* Set a style for the submit/login button */
+ .form-container .btn {
+   background-color: #4CAF50;
+   color: white;
+   padding: 16px 20px;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   margin-bottom:10px;
+   opacity: 0.8;
+ }
+ 
+ /* Add a red background color to the cancel button */
+ .form-container .cancel {
+   background-color: red;
+ }
+ 
+ /* Add some hover effects to buttons */
+ .form-container .btn:hover, .open-button:hover {
+   opacity: 1;
+ }
+    
+ }
 
  .cart-count{
-    position: relative;
-    left: 15px;
-    top: 5px;
-    background: red;
-    width: 13px;
-    font-size: 13px;
-    padding-left: 5px;
-    border-radius: 50%;
- }
+   position: relative;
+   left: 15px;
+   top: 5px;
+   background: red;
+   width: 13px;
+   font-size: 13px;
+   padding-left: 5px;
+   border-radius: 50%;
+}
+
 

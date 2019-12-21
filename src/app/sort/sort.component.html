@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container web-view">
     <div class="sort-title">Sort By</div>
     <div class="mat-app-background basic-container sort-tab-group">
         <mat-tab-group (selectedTabChange)="setTab($event)">
@@ -7,6 +7,13 @@
             <mat-tab label="Discount"> </mat-tab>
         </mat-tab-group>
     </div>
+</div>
+<div class="container mobile-view">
+    <mat-radio-group name="radioGroup" [(ngModel)]="tabSelection" (change)="radioChange($event)">
+        <mat-radio-button value="Price Low-High">Price Low-High</mat-radio-button>
+        <mat-radio-button value="Price High-Low">Price High-Low</mat-radio-button>
+        <mat-radio-button value="Discount">Discount</mat-radio-button>
+      </mat-radio-group>
 </div>
     
     

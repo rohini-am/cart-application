@@ -1,5 +1,6 @@
-
-.sort-title,.sort-tab-group{
+/*Desktop Styles*/
+@media only screen and (min-width: 961px) {
+  .sort-title,.sort-tab-group{
     display: inline-block;
 }
 
@@ -18,3 +19,23 @@
   .mat-app-background{
       background-color: white !important;
   }
+
+  .mobile-view{
+    display:none;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  .web-view{
+    display:none;
+  }
+  .mat-radio-button {
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    margin: 15px;
+    /* font-size: 14px; */
+    font-weight: 500;
+}
+}
