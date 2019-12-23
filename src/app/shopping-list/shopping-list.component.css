@@ -100,7 +100,7 @@ img {
 }
 
  /* Mobile Styles */
- @media only screen and (max-width: 400px) {
+ @media only screen and (max-width: 600px) {
     .flex-grid {
         display: grid;
         grid-template-columns: repeat(2, [col-start] 1fr);

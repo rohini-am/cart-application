@@ -23,7 +23,7 @@
 
 <!--Shopping List & Filter-->
 <div class="row web-content" style="margin-top: 15px;">
-  <div *ngIf="!showCart" style="height: 100%;">
+  <div *ngIf="!showCart" style="height: 100%;width:auto;">
     <div class="web-view">
       <div class="col-md-4" class="filter-container">
         <app-filter (priceRange)="getRange($event)"></app-filter>
@@ -52,7 +52,7 @@
     </div>
    
 </div>
-  <div *ngIf="showCart" style="height:auto">
+  <div *ngIf="showCart" style="height:auto;width:auto">
     <app-cart [checkoutCart]="checkoutItems" (cartItems)="getCartItems($event)" [searchModel]="searchModel"></app-cart>
   </div>
   

@@ -298,7 +298,7 @@
     }
   }
 
-html, body { height: 100%; }
+html, body { height: 100%; width:auto; overflow-x:hidden; }
 body { margin: 0; font-family: "Verdana"; font-size: 14px;} 
   /* background: #DCDCDC; } */
 

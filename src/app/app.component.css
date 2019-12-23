@@ -1,9 +1,6 @@
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
-   .web-content, .web-view{
-      /* height:100%; */
-   }
-
+ 
    .search{
       width: 53%;
       display: inline-block;
@@ -67,7 +64,7 @@
  }
 
  /* Mobile Styles */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   .head-icon{
      width:20%;
      display: inline-block;
